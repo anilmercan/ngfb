@@ -7,13 +7,17 @@
  * # post
  */
 angular.module('ngfbApp')
-  .directive('post', function (PostCtrl) {
+  .directive('post', function () {
     return {
-      templateUrl: 'post.html',
+      templateUrl: 'views/post.html',
       restrict: 'E',
-      controller: PostCtrl,
+      scope:  {
+        postInfo: '=info'
+      },
+      controller: 'PostCtrl',
+      controllerAs: 'vm',
       link: function postLink(scope, element, attrs) {
-        element.text('this is the post directive');
+
       }
     };
   });

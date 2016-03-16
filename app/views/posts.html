@@ -1,1 +1,70 @@
-<p>This is the posts view.</p>
+<div class="navbar-fixed">
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo vertical-align center"><img src="./images/lebowski.gif"/></a>
+      <ul class="right hide-on-med-and-down">
+        <li>
+          <a class="right waves-effect waves-light" ng-click="showForm()"><i
+            class="material-icons">add</i></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<div class="container post-section">
+
+  <div ng-show="formVisible" class="add-post-form show-hide">
+    <div class="card">
+
+      <div class="card-content">
+        <div class="row">
+          <div class="row">
+            <div class="col s12">
+              <div class="switch right">
+                <label>
+                  Unpublished
+                  <input type="checkbox" ng-model="postFormData.is_published"/>
+                  <span class="lever"></span>
+                  Published
+                </label>
+              </div>
+            </div>
+
+            <div class="col s12 show-hide" ng-hide="postFormData.is_published">
+              <label for="scheduledDate" class="">Scheduled Date</label>
+              <input date-picker id="scheduledDate" type="date" class="datepicker">
+            </div>
+
+            <div class="input-field col s12 ">
+              <textarea class="materialize-textarea message-text-area" ng-model="postFormData.message"
+                        required></textarea>
+              <label>Message</label>
+            </div>
+
+          </div>
+          <div class="row" ng-hide="postFormData.is_published">
+
+          </div>
+
+        </div>
+
+      </div>
+      <div class="card-action post-action">
+        <div class="row">
+          <div class="left">
+            <a class="cancel-post-btn waves-effect waves-orange btn-flat" ng-click="cancel()">Cancel</a>
+          </div>
+          <div class="right">
+            <button type="submit" class="waves-effect waves-green btn-flat save-post-btn" ng-click="createPost()">POST</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div ng-repeat="post in posts">
+    <Post info="post"></Post>
+  </div>
+
+</div>

@@ -8,26 +8,33 @@
  * Controller of the ngfbApp
  */
 angular.module('ngfbApp')
-  .controller('LoginCtrl', function ($scope, Facebook, $location) {
+  .controller('LoginCtrl', function ($scope, SessionStore, Facebook, $location, FBGraphService) {
 
     var isAuthenticated = false;
 
 
     var init = function(){
-      Facebook.getLoginStatus(checkLoginStatus);
+      $scope.facebookIsReady = false;
     };
 
-    var checkLoginStatus = function(response){
-      if(response.status === 'connected') {
+    var getPageTokenAndNavigate = function(){
+      FBGraphService.getPageToken().then(function(response){
+        SessionStore.put('access_token', response);
         $location.path('/posts');
+      });
+    };
+
+    $scope.checkLoginStatus = function(response){
+      if(response.status === 'connected') {
+        getPageTokenAndNavigate();
       } else {
         isAuthenticated = false;
       }
     };
 
-    $scope.login = function() {
+    $scope.loginToFacebook = function() {
       // From now on you can use the Facebook service just as Facebook api says
-      Facebook.login(checkLoginStatus);
+      Facebook.login( $scope.checkLoginStatus, {scope: 'manage_pages,read_insights,publish_pages'});
     };
 
     $scope.$watch(function() {
@@ -35,10 +42,9 @@ angular.module('ngfbApp')
       return Facebook.isReady();
     }, function(newVal) {
       if(newVal) {
-        $scope.facebookLoading = false;
+        $scope.facebookIsReady = true;
       }
     });
-
 
     init();
 
