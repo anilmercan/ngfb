@@ -1,5 +1,4 @@
 // bower:scss
-@import "Materialize/sass/materialize.scss";
 // endbower
 
 .browsehappy {
@@ -66,10 +65,91 @@ body {
   }
 }
 
+.login-page{
+  height:100vh;
+}
+.height-max{
+  height:100%;
+}
+.width-max{
+  width:100%;
+}
+.fb-login{
+  background-color: #3b5998;
+}
+.login-logo{
+  height:250px;
+  width:auto;
+  margin-bottom:20px;
+}
+
+.add-post-btn {
+  position: fixed;
+  top: 60px;
+  right:20px;
+
+}
+.post-action{
+  padding:0 !important;
+}
+
+.edit-post-btn, .cancel-post-btn{
+  margin-left:20px;
+}
+.save-post-btn{
+  color:#26a69a !important;
+}
+.view-count{
+  font-weight:500;
+  margin-right:20px;
+}
+.delete-post-btn{
+  color:red !important;
+  margin-right:0px !important;
+}
+.card-action{
+  .row{
+    margin-bottom:0px;
+  }
+}
+.message-text-area{
+  margin-top:10px !important;
+}
+.post-message{
+  font-weight:300;
+  font-size:24px;
+}
+
+.add-post-form{
+  position:relative;
+  z-index:10;
+}
+.post-section{
+  margin-top:20px;
+}
+
+nav{
+  background-color: #26a69a;
+  img{
+    height:65px;
+    width:auto;
+  }
+
+}
+
+
+.show-hide {
+  -webkit-transition:all linear 0.5s;
+  transition:all linear 0.5s;
+}
+
+.show-hide.ng-hide {
+  opacity:0;
+}
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
-    max-width: 730px;
+    max-width: 80%;
   }
 
   /* Remove the padding we set earlier */
@@ -87,4 +167,8 @@ body {
   .jumbotron {
     border-bottom: 0;
   }
+}
+html, body {
+  margin: 0;
+  height: 100%;
 }
