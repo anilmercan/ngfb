@@ -2,7 +2,7 @@
   <nav>
     <div class="nav-wrapper">
       <a href="#!" class="brand-logo vertical-align center"><img src="./images/lebowski.gif"/></a>
-      <ul class="right hide-on-med-and-down">
+      <ul class="right">
         <li>
           <a class="right waves-effect waves-light" ng-click="showForm()"><i
             class="material-icons">add</i></a>
@@ -24,28 +24,23 @@
               <div class="switch right">
                 <label>
                   Unpublished
-                  <input type="checkbox" ng-model="postFormData.is_published"/>
+                  <input type="checkbox" ng-model="postFormData.published" ng-init="postFormData.published = false"/>
                   <span class="lever"></span>
                   Published
                 </label>
               </div>
             </div>
-
-            <div class="col s12 show-hide" ng-hide="postFormData.is_published">
-              <label for="scheduledDate" class="">Scheduled Date</label>
-              <input date-picker id="scheduledDate" type="date" class="datepicker">
-            </div>
-
             <div class="input-field col s12 ">
               <textarea class="materialize-textarea message-text-area" ng-model="postFormData.message"
                         required></textarea>
               <label>Message</label>
             </div>
-
+            <div class="col s12 show-hide" ng-hide="postFormData.published">
+              <label>Scheduled Publish Time</label>
+              <date-time-picker id="scheduledDate" ng-model="postFormData.scheduled_publish_time"></date-time-picker>
+            </div>
           </div>
-          <div class="row" ng-hide="postFormData.is_published">
 
-          </div>
 
         </div>
 

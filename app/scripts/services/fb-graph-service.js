@@ -67,7 +67,18 @@ angular.module('ngfbApp')
       return deferred.promise;
     };
 
-    this.updatePost = function (id) {
+    this.updatePost = function (post) {
+      var deferred = $q.defer();
+      post.access_token = SessionStore.get('access_token');
+
+      Facebook.api('/' + post.id, 'POST', post, function (response) {
+        if (!response || response.error) {
+          deferred.reject('Error occured');
+        } else {
+          deferred.resolve(response);
+        }
+      });
+      return deferred.promise;
 
     };
 
@@ -85,7 +96,20 @@ angular.module('ngfbApp')
     };
 
     this.deletePost = function (id) {
+      var deferred = $q.defer();
+      Facebook.api('/' + id, 'DELETE', {
+        access_token: SessionStore.get('access_token')
+      }, function (response) {
+        if (!response || response.error) {
+          deferred.reject('Error occured');
+        } else {
+          deferred.resolve(response);
+        }
 
+
+      });
+
+      return deferred.promise;
     };
 
 

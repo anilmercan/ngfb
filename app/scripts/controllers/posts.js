@@ -34,6 +34,8 @@ angular.module('ngfbApp')
       });
     };
 
+    $scope.$on('updatedOrDestroyedPost', init);
+
 
 
     init();

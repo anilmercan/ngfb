@@ -1,0 +1,32 @@
+<div class="date-time-picker row">
+
+  <div class="input-field col s12">
+    <input type="date" class="datepicker" ng-model="date"/>
+  </div>
+  <label  class="col s12">Scheduled Time</label>
+  <div class=" col s3">
+
+    <select trigger-blur name="hours" ng-model="selectedHour" class="browser-default">
+      <option value="" >hh</option>
+      <option ng-repeat="hour in hours" value="{{hour}}">{{hour}}</option>
+    </select>
+
+  </div>
+  :
+  <div class=" col s3">
+    <select trigger-blur name="minutes" ng-model="selectedMinute" class="browser-default">
+      <option value="" selected >mm</option>
+      <option ng-repeat="minute in minutes" value="{{minute}}">{{minute}}</option>
+    </select>
+
+  </div>
+  <div class=" col s3">
+    <select trigger-blur name="meridiem" ng-model="selectedMeridiem" class="browser-default">
+      <option value="" selected></option>
+      <option ng-repeat="meridiem in meridiems" value="{{meridiem}}">{{meridiem}}</option>
+    </select>
+
+  </div>
+  </div>
+
+</div>
